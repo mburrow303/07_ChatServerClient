@@ -4,12 +4,13 @@ import './App.css';
 import Nav from './components/nav/Nav';
 
 import Footer from './components/footer/Footer';
+import Auth from './components/auth/Auth';
 
 function App() {
   return (
     <div className="App">
         <Nav />
-      
+        <Auth />
       <header className="App-header">
         {/*<img src={logo} className="App-logo" alt="logo" />
         <p>
