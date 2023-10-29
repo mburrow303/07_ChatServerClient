@@ -10,7 +10,6 @@ return(
 <Navbar
 className="my-2"
 color="secondary"
-secondary
 >
 <NavbarBrand href="/">
  {/*  <img

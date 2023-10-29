@@ -1,6 +1,6 @@
 
 //import Login from './login/Login';
-//import Signup from './signup/Signup';
+import Signup from './signup/Signup';
 
 function Auth(props) {
   return (
@@ -14,7 +14,7 @@ function Auth(props) {
     <div style={{width: '48%', display: 'inline-block'}}>
      {/* Signup Component */}
      <h2>Signup</h2>
-     {/* <Signup setToken={props.setToken}/> */}
+     <Signup setToken={props.setToken}/>
     </div>
     
    </>
