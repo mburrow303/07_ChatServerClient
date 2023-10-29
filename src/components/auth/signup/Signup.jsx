@@ -1,36 +1,82 @@
-import {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardBody,
+  CardLink,
+  Form,
+  FormGroup,
+  Input,
+  Button,
+} from "reactstrap";
 
 function Signup(props) {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const signupRoute = 'http://127.0.0.1:4000/user/signup';
+  const signupRoute = "http://127.0.0.1:4000/user/signup";
 
   return (
     <div>
-      <form>
-        <input placeholder="username" onChange={
-          (e) => {
-            setUsername(e.target.value)
-          }
-        } />
-        <br />
-        <input placeholder="email" onChange={
-          (e) => {
-            setEmail(e.target.value)
-          }
-        } />
-        <br />
-        <input placeholder="password" type="password" onChange={
-          e => setPassword(e.target.value)
-        } />
-        <br />
-        <button type="submit" onClick={displayInputFields}>Submit</button>
-      </form>
-      
+      <Card
+        style={{
+          width: "18rem",
+        }}
+      >
+        <CardBody>
+          <Form>
+            <FormGroup>
+              <Input
+                placeholder="email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </FormGroup>
+            <br />
+            <FormGroup>
+              <Input
+                placeholder="username"
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+              />
+            </FormGroup>
+            <br />
+            <FormGroup>
+              <Input
+                placeholder="password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </FormGroup>
+            <br />
+            <FormGroup>
+              <Input
+                placeholder="verify password"
+                type="password" /* 
+                onChange={ e => setPassword(e.target.value)} */
+              />
+            </FormGroup>
+            <CardLink
+              style={{ margin: "3px 10px" }}
+              href="http://localhost:3000/user/Login"
+            >
+              Back to Login
+            </CardLink>
+            <Button
+              style={{ margin: "3px 10px" }}
+              type="submit"
+              onClick={displayInputFields}
+            >
+              Signup
+            </Button>
+          </Form>
+        </CardBody>
+      </Card>
+
       {/*
         username !== ''
         ?
@@ -39,11 +85,11 @@ function Signup(props) {
         null
       */}
     </div>
-  )
+  );
 
-  async function displayInputFields (e) {
+  async function displayInputFields(e) {
     e.preventDefault();
-    console.log('testing this function');
+    console.log("testing this function");
     console.log(username);
     console.log(email);
     console.log(password);
@@ -51,24 +97,23 @@ function Signup(props) {
     try {
       let response = await fetch(signupRoute, {
         headers: new Headers({
-          'content-type': 'application/json'
+          "content-type": "application/json",
         }),
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify({
           username: username,
           email: email,
-          password: password
-        })
+          password: password,
+        }),
       });
 
       let results = await response.json();
-      console.log(results); // print the results to see if the fetch works
+      console.log(results);
       props.setToken(results.token);
-      if(response.status === 200)
-      navigate('/about')
-   } catch(error) {
-    console.log(error);
-   }
+      if (response.status === 200) navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
@@ -78,56 +123,7 @@ function DisplayUser(props) {
       <h2>Username: {props.username}</h2>
       <h2>Password: {props.password}</h2>
     </div>
-  )
+  );
 }
 
-{ /* 
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  ListGroup,
-  ListGroupItem,
-  CardLink
-} from 'reactstrap';
-
-<Card
-  style={{
-    width: '18rem'
-  }}
->
-  <img
-    alt="Card"
-    src="https://picsum.photos/300/200"
-  />
-  <CardBody>
-    <CardTitle tag="h5">
-      Card Title
-    </CardTitle>
-    <CardText>
-      This is some text within a card body.
-    </CardText>
-  </CardBody>
-  <ListGroup flush>
-    <ListGroupItem>
-      An item
-    </ListGroupItem>
-    <ListGroupItem>
-      A second item
-    </ListGroupItem>
-    <ListGroupItem>
-      And a third item
-    </ListGroupItem>
-  </ListGroup>
-  <CardBody>
-    <CardLink href="#">
-      Card Link
-    </CardLink>
-    <CardLink href="#">
-      Another Card Link
-    </CardLink>
-  </CardBody>
-</Card> */}
-
-export default Signup
+export default Signup;
