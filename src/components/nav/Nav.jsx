@@ -3,10 +3,14 @@ import {
   Navbar,
   NavbarBrand,
 } from 'reactstrap';
+import { Link } from 'react-router-dom'
 
-const Nav = () => {
+
+//? Creating NavBar
+const Nav = ({ token, clearToken }) => {
 return(
 
+  <nav>
 <Navbar
 className="my-2"
 color="secondary"
@@ -21,9 +25,18 @@ secondary
       width: 40
     }}
   /> */}
+  
+      {
+        !token
+        ?
+      <Link style={{margin: '3px 10px'}} to="/auth">Sign Up/Login</Link>
+        : 
+        <Link onClick={clearToken} style={{ margin: '3px 10px'}} to="/">Log Out</Link>
+      }
   <h2><b>Chat Me Up </b></h2>
 </NavbarBrand>
 </Navbar>
+  </nav>
 )
   }
 
