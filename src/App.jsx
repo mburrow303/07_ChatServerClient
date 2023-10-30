@@ -28,10 +28,12 @@ function App() {
     setToken('');
     localStorage.removeItem('token');
  
+
   }
   return (
     <div className="App">
       <BrowserRouter>
+
         <Nav token={token} clearToken={clearToken} />
         <Routes>
       <header className="App-header">
@@ -41,9 +43,9 @@ function App() {
       <Footer/>
       </BrowserRouter>
       {token}
+
     </div>
   );
 }
 
 export default App;
-

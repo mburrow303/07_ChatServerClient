@@ -1,4 +1,3 @@
-
 import Login from './login/Login';
 import Signup from './signup/Signup';
 
@@ -19,7 +18,4 @@ function Auth(props) {
     
    </>
 
-  )
- }
- 
- export default Auth;
+export default Auth;

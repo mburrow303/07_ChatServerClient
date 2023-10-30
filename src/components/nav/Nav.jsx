@@ -18,6 +18,7 @@ secondary
 >
 <NavbarBrand href="/">
  {/*  <img
+
     alt="logo"
     src="/logo-white.svg"
     style={{
@@ -25,6 +26,7 @@ secondary
       width: 40
     }}
   /> */}
+
   
       {
         !token
@@ -39,6 +41,5 @@ secondary
   </nav>
 )
   }
-
 
 export default Nav;
