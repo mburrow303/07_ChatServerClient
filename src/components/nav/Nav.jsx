@@ -1,19 +1,11 @@
-import React from 'react'
-import {
-  Navbar,
-  NavbarBrand,
-} from 'reactstrap';
+import React from "react";
+import { Navbar, NavbarBrand } from "reactstrap";
 
 const Nav = () => {
-return(
-
-<Navbar
-className="my-2"
-color="secondary"
-secondary
->
-<NavbarBrand href="/">
- {/*  <img
+  return (
+    <Navbar className="my-2" color="secondary">
+      <NavbarBrand href="/">
+        {/*  <img
     alt="logo"
     src="/logo-white.svg"
     style={{
@@ -21,11 +13,12 @@ secondary
       width: 40
     }}
   /> */}
-  <h2><b>Chat Me Up </b></h2>
-</NavbarBrand>
-</Navbar>
-)
-  }
-
+        <h2>
+          <b>Chat Me Up </b>
+        </h2>
+      </NavbarBrand>
+    </Navbar>
+  );
+};
 
 export default Nav;
