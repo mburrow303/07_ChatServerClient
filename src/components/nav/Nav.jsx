@@ -1,11 +1,24 @@
-import React from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
+import React from 'react'
+import {
+  Navbar,
+  NavbarBrand,
+} from 'reactstrap';
+import { Link } from 'react-router-dom'
 
-const Nav = () => {
-  return (
-    <Navbar className="my-2" color="secondary">
-      <NavbarBrand href="/">
-        {/*  <img
+
+//? Creating NavBar
+const Nav = ({ token, clearToken }) => {
+return(
+
+  <nav>
+<Navbar
+className="my-2"
+color="secondary"
+secondary
+>
+<NavbarBrand href="/">
+ {/*  <img
+
     alt="logo"
     src="/logo-white.svg"
     style={{
@@ -13,12 +26,20 @@ const Nav = () => {
       width: 40
     }}
   /> */}
-        <h2>
-          <b>Chat Me Up </b>
-        </h2>
-      </NavbarBrand>
-    </Navbar>
-  );
-};
+
+  
+      {
+        !token
+        ?
+      <Link style={{margin: '3px 10px'}} to="/auth">Sign Up/Login</Link>
+        : 
+        <Link onClick={clearToken} style={{ margin: '3px 10px'}} to="/">Log Out</Link>
+      }
+  <h2><b>Chat Me Up </b></h2>
+</NavbarBrand>
+</Navbar>
+  </nav>
+)
+  }
 
 export default Nav;

@@ -9,38 +9,39 @@ import Auth from "./components/auth/Auth";
 import Login from "./components/auth/login/Login";
 
 function App() {
-  const [token, setToken] = useState("");
-
+  const [token, setToken] = useState('');
+  
   useEffect(initializeToken, []);
-
-  function initializeToken() {
-    setToken(localStorage.token);
-    //setToken(localStorage.getItem('token'));
+  
+  function initializeToken(){
+  setToken(localStorage.token);
+  console.log(localStorage.token);
   }
-
+  
   function updateToken(newToken) {
     setToken(newToken);
     localStorage.setItem("token", newToken);
-
+    
     let localToken = localStorage.token;
     console.log(localToken);
   }
 
   function clearToken() {
-    setToken("");
-    localStorage.removeItem("token");
+    setToken('');
+    localStorage.removeItem('token');
     // delete localStorage.token;
   }
   return (
     <div className="App" margin-bottom="60px">
       <BrowserRouter>
-        <Nav />
+        <Nav token={token} clearToken={clearToken} />
         <Routes>
           <Route path="/" element={<Auth setToken={updateToken} />} />
           <Route path="/login" element={<Login setToken={updateToken} />} />
         </Routes>
         <Footer style={{position:"fixed",bottom:"0"}}/>
       </BrowserRouter>
+      {token}
     </div>
   );
 }
