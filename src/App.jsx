@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
 import Auth from "./components/auth/Auth";
+import Login from "./components/auth/login/Login";
 
 function App() {
   const [token, setToken] = useState("");
@@ -31,13 +32,14 @@ function App() {
     // delete localStorage.token;
   }
   return (
-    <div className="App">
+    <div className="App" margin-bottom="60px">
       <BrowserRouter>
         <Nav />
         <Routes>
           <Route path="/" element={<Auth setToken={updateToken} />} />
+          <Route path="/login" element={<Login setToken={updateToken} />} />
         </Routes>
-        <Footer />
+        <Footer style={{position:"fixed",bottom:"0"}}/>
       </BrowserRouter>
     </div>
   );

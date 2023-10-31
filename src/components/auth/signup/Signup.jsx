@@ -35,7 +35,6 @@ function Signup(props) {
                 }}
               />
             </FormGroup>
-            <br />
             <FormGroup>
               <Input
                 placeholder="username"
@@ -44,7 +43,6 @@ function Signup(props) {
                 }}
               />
             </FormGroup>
-            <br />
             <FormGroup>
               <Input
                 placeholder="password"
@@ -52,7 +50,6 @@ function Signup(props) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </FormGroup>
-            <br />
             <FormGroup>
               <Input
                 placeholder="verify password"
@@ -62,7 +59,7 @@ function Signup(props) {
             </FormGroup>
             <CardLink
               style={{ margin: "3px 10px" }}
-              href="http://localhost:3000/user/Login"
+              href="http://localhost:3000/login"
             >
               Back to Login
             </CardLink>
@@ -117,13 +114,13 @@ function Signup(props) {
   }
 }
 
-function DisplayUser(props) {
+/* function DisplayUser(props) {
   return (
     <div>
       <h2>Username: {props.username}</h2>
       <h2>Password: {props.password}</h2>
     </div>
   );
-}
+} */
 
 export default Signup;
