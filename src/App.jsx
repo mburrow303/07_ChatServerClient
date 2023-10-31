@@ -1,11 +1,12 @@
-//import logo from './logo.svg';
-import React from 'react';
-import './App.css';
-import Nav from './components/nav/Nav';
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Footer from './components/footer/Footer';
-import Auth from './components/auth/Auth';
+import React from "react";
+import "./App.css";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Nav from "./components/nav/Nav";
+import Footer from "./components/footer/Footer";
+import Auth from "./components/auth/Auth";
+import Login from "./components/auth/login/Login";
 
 function App() {
   const [token, setToken] = useState('');
@@ -17,33 +18,30 @@ function App() {
   console.log(localStorage.token);
   }
   
-  function updatedToken(newToken) {
- 
+  function updateToken(newToken) {
     setToken(newToken);
     localStorage.setItem("token", newToken);
-
+    
+    let localToken = localStorage.token;
+    console.log(localToken);
   }
 
   function clearToken() {
     setToken('');
     localStorage.removeItem('token');
- 
-
+    // delete localStorage.token;
   }
   return (
-    <div className="App">
+    <div className="App" margin-bottom="60px">
       <BrowserRouter>
-
         <Nav token={token} clearToken={clearToken} />
         <Routes>
-      <header className="App-header">
-        <Route path="/auth" element={<Auth setToken={updatedToken}/>}/>
-      </header>
-      </Routes>
-      <Footer/>
+          <Route path="/" element={<Auth setToken={updateToken} />} />
+          <Route path="/login" element={<Login setToken={updateToken} />} />
+        </Routes>
+        <Footer style={{position:"fixed",bottom:"0"}}/>
       </BrowserRouter>
       {token}
-
     </div>
   );
 }

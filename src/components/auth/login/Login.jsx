@@ -58,7 +58,7 @@ function Login({ setToken }) {
             />
             <CardLink
               style={{ margin: "3px 10px" }}
-              href="http://localhost:3000/user/signup"
+              href="http://localhost:3000/"
             >
               Create Account
             </CardLink>
