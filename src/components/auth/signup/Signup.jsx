@@ -74,13 +74,13 @@ function Signup(props) {
         </CardBody>
       </Card>
 
-      {/*
-        username !== ''
+      
+        {/* {username !== ''
         ?
         <DisplayUser username={username} password={password}/>
         :
-        null
-      */}
+        null} */}
+     
     </div>
   );
 
@@ -114,13 +114,13 @@ function Signup(props) {
   }
 }
 
-/* function DisplayUser(props) {
+function DisplayUser(props) {
   return (
     <div>
       <h2>Username: {props.username}</h2>
       <h2>Password: {props.password}</h2>
     </div>
   );
-} */
+}
 
 export default Signup;

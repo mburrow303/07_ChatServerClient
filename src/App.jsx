@@ -29,7 +29,6 @@ function App() {
   function clearToken() {
     setToken('');
     localStorage.removeItem('token');
-    // delete localStorage.token;
   }
   return (
     <div className="App" margin-bottom="60px">
@@ -41,7 +40,7 @@ function App() {
         </Routes>
         <Footer style={{position:"fixed",bottom:"0"}}/>
       </BrowserRouter>
-      {token}
+      {/*{token}*/}
     </div>
   );
 }

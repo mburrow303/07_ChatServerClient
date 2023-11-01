@@ -17,7 +17,7 @@ function Login({ setToken }) {
   const [password, setPassword] = useState("");
 
   async function loginUser(e) {
-    e.preventDefault(); 
+    e.preventDefault();
 
     const response = await fetch("http://localhost:4000/user/login", {
       headers: new Headers({
@@ -37,7 +37,7 @@ function Login({ setToken }) {
   }
 
   return (
-    <div>
+    <div style={{ width: "48%", display: "inline-block" }}>
       <Card
         style={{
           width: "18rem",
