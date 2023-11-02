@@ -38,7 +38,7 @@ function App() {
           <Route path="/" element={<Auth setToken={updateToken} />} />
           <Route path="/login" element={<Login setToken={updateToken} />} />
         </Routes>
-        <Footer style={{position:"fixed",bottom:"0"}}/>
+        <Footer />
       </BrowserRouter>
       {/*{token}*/}
     </div>

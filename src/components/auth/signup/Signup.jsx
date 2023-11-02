@@ -21,9 +21,7 @@ function Signup(props) {
   return (
     <div>
       <Card
-        style={{
-          width: "18rem",
-        }}
+        style={{width: "18rem", textAlign: "center"}}
       >
         <CardBody>
           <Form>
