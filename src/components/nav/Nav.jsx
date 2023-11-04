@@ -8,7 +8,8 @@ const Nav = ({ token, clearToken }) => {
     <nav>
       <Navbar className="my-2" color="secondary">
         <NavbarBrand>
-          {!token ? (
+
+          {/* {!token ? (
             <Link style={{ margin: "3px 10px" }} to="/">
               Sign Up/Login
             </Link>
@@ -16,7 +17,7 @@ const Nav = ({ token, clearToken }) => {
             <Link onClick={clearToken} style={{ margin: "3px 10px" }} to="/">
               Log Out
             </Link>
-          )}
+          )} */}
           <h2>
             <b>Chat Me Up </b>
           </h2>

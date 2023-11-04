@@ -105,7 +105,7 @@ function Signup(props) {
       let results = await response.json();
       console.log(results);
       props.setToken(results.token);
-      if (response.status === 200) navigate("/");
+      if (response.status === 200) navigate("/room/list");
     } catch (error) {
       console.log(error);
     }
