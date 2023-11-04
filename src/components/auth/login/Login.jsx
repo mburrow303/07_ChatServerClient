@@ -33,7 +33,7 @@ function Login({ setToken }) {
     const results = await response.json();
     console.log(response.status);
     setToken(results.token);
-    if (response.status === 200) navigate("/");
+    if (response.status === 200) navigate("/room/list");
   }
 
   return (

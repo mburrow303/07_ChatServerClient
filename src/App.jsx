@@ -7,6 +7,12 @@ import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
 import Auth from "./components/auth/Auth";
 import Login from "./components/auth/login/Login";
+import RoomIndex from "./components/roomindex/RoomIndex";
+
+//import Display from "./components/display/Display"
+//import AddRoom from "./components/display/addroom/AddRoom";
+//import UpdateRoom from "./components/display/updateroom/UpdateRoom";
+//import DeleteRoom from "./components/display/deleteroom/DeleteRoom";
 
 function App() {
   const [token, setToken] = useState('');
@@ -37,6 +43,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Auth setToken={updateToken} />} />
           <Route path="/login" element={<Login setToken={updateToken} />} />
+          <Route path="/room/list" element={<RoomIndex />} />
+          
+          {/* <Route path="/display" element={<Display />} /> */}
+          {/* <Route path="/create" element={<AddRoom setToken={token} />} /> */}
+          {/* <Route path="/room/:id" element={<UpdateRoom setToken={updateToken} />} /> */}
+          {/* <Route path="/room/:id" element={<DeleteRoom setToken={updateToken} />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>
