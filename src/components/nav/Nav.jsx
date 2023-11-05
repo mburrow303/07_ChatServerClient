@@ -2,13 +2,11 @@ import React from "react";
 import { Navbar, NavbarBrand } from "reactstrap";
 import { Link } from "react-router-dom";
 
-//? Creating NavBar
 const Nav = ({ token, clearToken }) => {
   return (
     <nav>
       <Navbar className="my-2" color="secondary">
         <NavbarBrand>
-
           {/* {!token ? (
             <Link style={{ margin: "3px 10px" }} to="/">
               Sign Up/Login

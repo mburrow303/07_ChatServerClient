@@ -1,51 +1,49 @@
-import React from 'react';
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
 
 import Display from "../display/Display";
 
-function RoomIndex() {
+function RoomIndex({ token, getAllRooms }) {
   const navigate = useNavigate();
 
-  const getAllRoomsRoute = 'http://127.0.0.1:4000/room/list';
+  const getAllRoomsRoute = "http://127.0.0.1:4000/room/list";
 
-return (
-  <div>
-      <form>
-        <Display></Display>
-        <button type="submit" onClick={getAllRooms}>Show All Rooms</button>
-      </form>
-    </div>
-);
+  async function getAllRooms(e) {
+    e.preventDefault();
+    console.log("testing this get all rooms function!");
 
-async function getAllRooms (e) {
-  e.preventDefault();
-  console.log('testing this get all room function!');
-  //console.log(title);
-  //console.log(description);
+    try {
+      let response = await fetch(getAllRoomsRoute, {
+        headers: new Headers({
+          "content-type": "application/json",
+          Authorization: token,
+        }),
+        method: "GET",
+      });
 
-try {
-  let response = await fetch(getAllRoomsRoute, {
-  
-    headers: new Headers({
-      'content-type': 'application/json'
-    }),
-    method: 'GET',
-    body: JSON.stringify({
-      //title: title,
-      //description: description
-    })
-  });
+      let results = await response.json();
+      console.log(results);
 
-  let results = await response.json();
-  console.log(results);
-  //props.setToken(results.token);
-  if(response.status === 200)
-   navigate('/list')
- } catch(error) {
-  console.log(error);
+      if (response.status === 200) navigate("/room/create");
+    } catch (error) {
+      console.log(error);
+    }
   }
- }
+
+  return (
+    <div>
+      <Display token={token} getAllRooms={getAllRooms} />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Button type="submit" onClick={getAllRooms}>
+        Show All Rooms
+      </Button>
+    </div>
+  );
 }
 
-export default RoomIndex
+export default RoomIndex;

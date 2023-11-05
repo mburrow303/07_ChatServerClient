@@ -18,6 +18,7 @@ function Login({ setToken }) {
 
   async function loginUser(e) {
     e.preventDefault();
+    console.log("testing this login function!");
 
     const response = await fetch("http://localhost:4000/user/login", {
       headers: new Headers({
@@ -33,7 +34,7 @@ function Login({ setToken }) {
     const results = await response.json();
     console.log(response.status);
     setToken(results.token);
-    if (response.status === 200) navigate("/room/list");
+    if (response.status === 200) navigate("/room/create");
   }
 
   return (
