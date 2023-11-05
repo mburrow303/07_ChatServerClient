@@ -6,7 +6,7 @@ import AddRoom from "./addroom/AddRoom";
 import UpdateRoom from "./updateroom/UpdateRoom";
 import DeleteRoom from "./deleteroom/DeleteRoom";
 
-function Display() {
+function Display({}) {
   const navigate = useNavigate();
 
   //const getAllRoomsRoute = 'http://127.0.0.1:4000/room/list';
@@ -14,9 +14,9 @@ function Display() {
 return (
   <div>
       <form>
-        <AddRoom></AddRoom>
-        <UpdateRoom></UpdateRoom>
-        <DeleteRoom></DeleteRoom>
+        <AddRoom/>
+        <UpdateRoom/>
+        <DeleteRoom token={token}/>
       </form>
     </div>
  );

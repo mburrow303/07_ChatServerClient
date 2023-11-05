@@ -2,16 +2,18 @@ import React from 'react';
 import { Button } from 'reactstrap';
 
 const DeleteRoomButton =
-({ objectId }) => {
+({ objectId, token }) => {
+  
   const handleDelete = async (e) => {
     e.preventDefault();
 
-    try {
+    try { 
       const response = await
       fetch(`http://localhost:4000/room/${objectId}`, {
         method: 'DELETE',
         headers: { 
-          'content-type': 'application/json',
+          'content-type': 'application/json', 
+          'authorization': token
         },
       });
 
