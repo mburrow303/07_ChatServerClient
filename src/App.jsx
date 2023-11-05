@@ -9,7 +9,7 @@ import Auth from "./components/auth/Auth";
 import Login from "./components/auth/login/Login";
 import RoomIndex from "./components/roomindex/RoomIndex";
 
-function App({ getAllRooms }) {
+function App() {
   const [token, setToken] = useState("");
 
   useEffect(initializeToken, []);
@@ -38,10 +38,7 @@ function App({ getAllRooms }) {
         <Routes>
           <Route path="/" element={<Auth setToken={updateToken} />} />
           <Route path="/login" element={<Login setToken={updateToken} />} />
-          <Route
-            path="/room/create"
-            element={<RoomIndex token={token} getAllRooms={getAllRooms} />}
-          />
+          <Route path="/room/create" element={<RoomIndex token={token} />} />
         </Routes>
         <Footer />
       </BrowserRouter>
