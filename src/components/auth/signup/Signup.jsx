@@ -18,11 +18,11 @@ function Signup(props) {
 
   const signupRoute = "http://127.0.0.1:4000/user/signup";
 
+  //console.log("testing this signup function!");
+
   return (
     <div>
-      <Card
-        style={{width: "18rem", textAlign: "center"}}
-      >
+      <Card style={{ width: "18rem", textAlign: "center" }}>
         <CardBody>
           <Form>
             <FormGroup>
@@ -49,11 +49,7 @@ function Signup(props) {
               />
             </FormGroup>
             <FormGroup>
-              <Input
-                placeholder="verify password"
-                type="password" /* 
-                onChange={ e => setPassword(e.target.value)} */
-              />
+              <Input placeholder="verify password" type="password" />
             </FormGroup>
             <CardLink
               style={{ margin: "3px 10px" }}
@@ -71,23 +67,15 @@ function Signup(props) {
           </Form>
         </CardBody>
       </Card>
-
-      
-        {/* {username !== ''
-        ?
-        <DisplayUser username={username} password={password}/>
-        :
-        null} */}
-     
     </div>
   );
 
   async function displayInputFields(e) {
     e.preventDefault();
-    console.log("testing this function");
-    console.log(username);
-    console.log(email);
-    console.log(password);
+    console.log("testing this display input function");
+    //console.log(username);
+    //console.log(email);
+    //console.log(password);
 
     try {
       let response = await fetch(signupRoute, {
@@ -104,21 +92,13 @@ function Signup(props) {
 
       let results = await response.json();
       console.log(results);
+      console.log("testing this signup function!");
       props.setToken(results.token);
-      if (response.status === 200) navigate("/room/list");
+      if (response.status === 200) navigate("/room/create");
     } catch (error) {
       console.log(error);
     }
   }
-}
-
-function DisplayUser(props) {
-  return (
-    <div>
-      <h2>Username: {props.username}</h2>
-      <h2>Password: {props.password}</h2>
-    </div>
-  );
 }
 
 export default Signup;
