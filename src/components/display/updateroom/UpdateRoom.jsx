@@ -47,7 +47,7 @@ const UpdateRoom = (props) => {
 
   return (
     <Button
-      style={{ backgroundColor: "pink", color:"purple", font: "inherit" }} type="submit"
+      style={{ margin:"3px 20px",backgroundColor: "pink", color:"purple", font: "inherit" }} type="submit"
       onClick={UpdateRoom}> Update Room
     </Button>
   );
