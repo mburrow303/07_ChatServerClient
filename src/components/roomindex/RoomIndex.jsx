@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "reactstrap";
 
 import { getAllRooms } from "../../lib/utils";
-import AddRoom from "../display/addroom/AddRoom";
+import AddRoom from "../display/addroom/AddRoom"
 
 function RoomIndex({ token }) {
   const [rooms, setRooms] = React.useState([]);

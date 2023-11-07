@@ -27,7 +27,7 @@ const DeleteRoomButton = ({ objectId, token, getAllRooms }) => {
   getAllRooms();
 
   return (
-    <Button color="danger" OnClick={handleDelete}>
+    <Button color="danger" type="submit" onClick={handleDelete}>
       Delete Room
     </Button>
   );
