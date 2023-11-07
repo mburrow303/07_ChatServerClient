@@ -1,9 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import { Card, CardBody, Form, FormGroup, Input, Button } from "reactstrap";
+import React, { useState } from "react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input } from "reactstrap";
 import { getAllRooms } from "../../../lib/utils";
 
 function AddRoom({ token, setRooms }) {
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -11,11 +13,7 @@ function AddRoom({ token, setRooms }) {
 
   async function AddNewRoom(e) {
     e.preventDefault();
-    console.log("testing this add a room function!");
-    // console.log & display data from the input fields
-    //console.log(title);
-    //console.log(description);
-    // Add Room
+
     let response = await fetch(addRoomRoute, {
       headers: new Headers({
         "content-type": "application/json",
@@ -27,45 +25,46 @@ function AddRoom({ token, setRooms }) {
         description: description,
       }),
     });
-    // Get rooms from database
-    const rooms = await getAllRooms(token);
-    // Update room in parent state
-    setRooms(rooms);
+
+    // Check if the response is successful (you might want to add error handling here)
+    if (response.ok) {
+      // Close the modal after adding a room
+      toggle();
+
+      // Fetch updated list of rooms
+      const rooms = await getAllRooms(token);
+
+      // Update room in parent state
+      setRooms(rooms);
+    }
   }
 
   return (
-    <div style={{ width: "48%", display: "inline-block" }}>
-      <Card
-        style={{
-          width: "18rem",
-        }}
-      >
-        <CardBody>
+    <div>
+      <Button color="primary" onClick={toggle}>Add Room</Button>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Add New Room</ModalHeader>
+        <ModalBody>
           <Form>
             <FormGroup>
               <Input
                 placeholder="Room Title"
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </FormGroup>
-            <br />
             <FormGroup>
               <Input
                 placeholder="Room Description"
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </FormGroup>
-            <br />
-            <Button type="submit" onClick={AddNewRoom}>
-              Create Room
-            </Button>
           </Form>
-        </CardBody>
-      </Card>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={AddNewRoom}>Create Room</Button>{' '}
+          <Button color="secondary" onClick={toggle}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 }
